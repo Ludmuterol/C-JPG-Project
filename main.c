@@ -3,7 +3,7 @@
 #include <windows.h>
 void main()
 {
-    FILE *in = fopen("parrot.bmp", "r");
+    FILE *in = fopen("parrot.bmp", "rb");
     if (in == NULL)
     {
         return;
