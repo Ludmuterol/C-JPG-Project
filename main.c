@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "bmp.h"
-
+#include <windows.h>
 void main()
 {
     FILE *in = fopen("parrot.bmp", "r");
@@ -32,10 +31,13 @@ void main()
     }
     fwrite(&bf, sizeof (BITMAPFILEHEADER), 1, out);
     fwrite(&bi, sizeof (BITMAPINFOHEADER), 1, out);
+
+
     unsigned char* imageData;
     imageData = (unsigned char*)malloc(bi.biSizeImage);
     fread(imageData,bi.biSizeImage,1,in);
     fwrite(imageData,bi.biSizeImage,1,out);
+
     fclose(in);
     fclose(out);
     printf("woop\n");
