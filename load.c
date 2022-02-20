@@ -54,7 +54,7 @@ YCbCrTRIPLE *convert(BMPIMAGE *image)
 
     //allocating memory for converted image
     convImage = (YCbCrTRIPLE *)malloc(image->bi.biSizeImage);
-
+    
     //each pixel gets converted from RGB to YCbCr
     for (int i = 0; i < image->bi.biHeight; i++)
     {
@@ -62,7 +62,7 @@ YCbCrTRIPLE *convert(BMPIMAGE *image)
         {
             //current position on converted image
             int convPos = i * image->bi.biWidth + j;
-
+            
             //current position on bmp image
             int origPos = (image->bi.biHeight - 1 - i) * image->bi.biWidth + j;
 
@@ -70,6 +70,7 @@ YCbCrTRIPLE *convert(BMPIMAGE *image)
             convImage[convPos].Y  =  0.299  * image->imageData[origPos].rgbtRed + 0.5876 * image->imageData[origPos].rgbtGreen + 0.114  * image->imageData[origPos].rgbtBlue;
             convImage[convPos].Cb = -0.1687 * image->imageData[origPos].rgbtRed - 0.3313 * image->imageData[origPos].rgbtGreen + 0.5    * image->imageData[origPos].rgbtBlue + 128;
             convImage[convPos].Cr =  0.5    * image->imageData[origPos].rgbtRed - 0.4187 * image->imageData[origPos].rgbtGreen - 0.0813 * image->imageData[origPos].rgbtBlue + 128;
+            
         }
     }
     return (convImage);

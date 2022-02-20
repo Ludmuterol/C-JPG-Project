@@ -7,7 +7,7 @@ void main()
 {
     //load image
     BMPIMAGE image;
-    load(&image, "parrot.bmp");
+    load(&image, "parrot.bmp");     //bmp from paint not from paint.net cause paint.net doesn't save filesize in bi.biSizeImage
 
     //convert image from RGB to YCbCr (convImage has no infos anymore, just image data)
     YCbCrTRIPLE *convImage = convert(&image);
